@@ -1,6 +1,6 @@
    function checkGuess(): void{
         const input = document.getElementById("guess-input") as HTMLInputElement;
-        const result = document.getElementById("result-text") as HTMLInputElement;
+        const result = document.getElementById("result-text") as HTMLParagraphElement;
         const userGuest = input.value.trim().toLowerCase();
         const correctAnswer = "e46";
 
