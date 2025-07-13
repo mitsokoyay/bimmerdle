@@ -1,10 +1,11 @@
    function checkGuess(): void{
-        const input = document.getElementById("guess-input") as HTMLInputElement;
+        const firstInput = document.getElementById("guess-input") as HTMLInputElement;
         const result = document.getElementById("result-text") as HTMLParagraphElement;
-        const userGuest = input.value.trim().toLowerCase();
-        const correctAnswer = "e46";
+        const modelExInput = document.getElementById("model-input") as HTMLInputElement;
+        const modelInput = modelExInput.value.trim().toLowerCase();
+        const car = {model: "3 Series", chassisCode: "E46", make: "BMW", }
 
-        if(correctAnswer == userGuest){
+        if(modelInput == car.model.toLowerCase()){
           result.textContent = "Correct!";
           result.style.color = "green";
         }
