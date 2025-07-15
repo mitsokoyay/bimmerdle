@@ -1,14 +1,17 @@
 
 body {
-  font-family: sans-serif;
+  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
   text-align: center;
   padding: 40px;
-  background: #111;
-  color: white;
+  background: white;
+  color: blue;
 }
 
 #image-container img {
-  width: 100%;
+  border: 3px solid #000;
+  border-radius: 10px;
+  padding: 5px
+  width: fit-content;
   max-width: 900px;
   height: auto;
   display: block;
