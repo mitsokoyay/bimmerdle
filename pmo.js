@@ -11,6 +11,7 @@ function checkGuess() {
     if (modelCheckInput == car.model.toLowerCase()) {
         modelResult.textContent = "Correct!";
         modelResult.style.color = "green";
+        console.log(x);
     }
     else {
         modelResult.textContent = "Incorrect";
@@ -18,11 +19,11 @@ function checkGuess() {
     }
     if (chassisCheckInput == car.chassisCode.toLowerCase()) {
         chassisResult.textContent = "Correct!";
-        result.style.color = "green";
+        chassisResult.style.color = "green";
     }
     else {
-        result.textContent = "Incorrect";
-        result.style.color = "red";
+        chassisResult.textContent = "Incorrect";
+        chassisResult.style.color = "red";
     }
 }
 window.checkGuess = checkGuess;

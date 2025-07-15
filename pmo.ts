@@ -12,6 +12,7 @@
         if(modelCheckInput == car.model.toLowerCase()){
           modelResult.textContent = "Correct!";
           modelResult.style.color = "green";
+          console.log(x);
         }
         else{
           modelResult.textContent = "Incorrect";
@@ -20,12 +21,12 @@
 
         if(chassisCheckInput == car.chassisCode.toLowerCase()){
           chassisResult.textContent = "Correct!";
-          result.style.color = "green";
+          chassisResult.style.color = "green";
 
         }
         else{
-          result.textContent = "Incorrect";
-          result.style.color = "red";
+          chassisResult.textContent = "Incorrect";
+          chassisResult.style.color = "red";
         }
         
       }
