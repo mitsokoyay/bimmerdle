@@ -1,3 +1,26 @@
+
+interface Car{
+  id: string;
+  name: string;
+  chassis: string;
+  year: string;
+  image: string;
+}
+
+let cars: Car[] = [];
+let correctCars: Car | null = null;
+
+async function loadCars(): Promise<void>{
+  const response = await fetch('cars.json');
+  const data: Car[] = await response.json();
+  cars = data;
+
+
+  correctCars = cars[Math.floor(Math.random() * cars.length)];
+  console.log("Correct car: ", correctCars);
+}
+
+loadCars();
    function checkGuess(): void{
         const firstInput = document.getElementById("guess-input") as HTMLInputElement;
         const result = document.getElementById("result-text") as HTMLParagraphElement;
@@ -12,7 +35,6 @@
         if(modelCheckInput == car.model.toLowerCase()){
           modelResult.textContent = "Correct!";
           modelResult.style.color = "green";
-          console.log(x);
         }
         else{
           modelResult.textContent = "Incorrect";
@@ -31,3 +53,4 @@
         
       }
       (window as any).checkGuess = checkGuess;
+

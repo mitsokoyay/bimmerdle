@@ -1,0 +1,12 @@
+
+{
+  "compilerOptions": {
+    "target": "ES2015",         // Enables async/await and Promise
+    "module": "ES6",            // Use ES modules
+    "lib": ["DOM", "ES2015"],   // Adds DOM and modern JS features
+    "strict": true,             // Strict type checking
+    "outDir": "./dist",         // Where compiled JS files go
+    "rootDir": "./src"          // Where your TS source files are
+  },
+  "include": ["src"]
+}
