@@ -21,6 +21,8 @@ async function loadCars(): Promise<void>{
 }
 
 loadCars();
+
+console.log("Cars loaded: ", cars);
    function checkGuess(): void{
         const firstInput = document.getElementById("guess-input") as HTMLInputElement;
         const result = document.getElementById("result-text") as HTMLParagraphElement;

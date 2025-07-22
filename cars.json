@@ -13,5 +13,13 @@
     "year": "1985",
     "chassis": "E30",
     "image": ""
+  },
+  
+  {
+    "id": "e36",
+    "name": "BMW 3 Series E36",
+    "year": "1996",
+    "chassis": "E36",
+    "image": ""
   }
 ]
