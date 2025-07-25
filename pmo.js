@@ -38,10 +38,10 @@ var cars = [];
 var correctCars = null;
 function loadCars() {
     return __awaiter(this, void 0, void 0, function () {
-        var response, data;
+        var response, data, imageContainer, img;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, fetch('cars.json')];
+                case 0: return [4 /*yield*/, fetch("cars.json")];
                 case 1:
                     response = _a.sent();
                     return [4 /*yield*/, response.json()];
@@ -50,12 +50,21 @@ function loadCars() {
                     cars = data;
                     correctCars = cars[Math.floor(Math.random() * cars.length)];
                     console.log("Correct car: ", correctCars);
+                    console.log("Cars loaded:", cars);
+                    imageContainer = document.getElementById("image-container");
+                    if (imageContainer && correctCars.image) {
+                        img = imageContainer.querySelector("img");
+                        if (img) {
+                            img.src = correctCars.image;
+                            img.alt = "Guess this BMW!";
+                        }
+                    }
                     return [2 /*return*/];
             }
         });
     });
 }
-loadCars();
+console.log("Cars loaded: ", cars);
 function checkGuess() {
     var firstInput = document.getElementById("guess-input");
     var result = document.getElementById("result-text");
@@ -65,7 +74,7 @@ function checkGuess() {
     var chassisInput = document.getElementById("chassis-code");
     var chassisCheckInput = chassisInput.value.trim().toLowerCase();
     var chassisResult = document.getElementById("chassis-result");
-    var car = { model: "3 Series", chassisCode: "E46", make: "BMW", };
+    var car = { model: "3 Series", chassisCode: "E46", make: "BMW" };
     if (modelCheckInput == car.model.toLowerCase()) {
         modelResult.textContent = "Correct!";
         modelResult.style.color = "green";
