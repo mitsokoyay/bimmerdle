@@ -6,10 +6,26 @@ interface Car {
   image: string;
 }
 
+const bmw1: Car = {
+  id: "BMW 3 Series E46",
+  name: "BMW 3 Series E46",
+  chassis: "E46",
+  year: "2004",
+  image: "bmwimages/1.jpg"
+}
+
+const bmw2: Car = {
+  id: "BMW 3 Series E30",
+  name: "BMW 3 Series E30",
+  chassis: "E30",
+  year: "1980",
+  image: "bmwimages/2.jpg"
+}
+
 let cars: Car[] = [];
 let correctCars: Car | null = null;
 
-async function loadCars(): Promise<void> {
+/* async function loadCars(): Promise<void> {
   const response = await fetch("cars.json");
   const data: Car[] = await response.json();
   cars = data;
@@ -25,9 +41,21 @@ async function loadCars(): Promise<void> {
       img.alt = "Guess this BMW!";
     }
   }
+} */
+
+
+function loadNewImage(): void{
+  let carArr: Car[] = [bmw1, bmw2];
+  const random = Math.floor(Math.random() * carArr.length);
+  const imgElement = document.getElementById('random-bmw') as HTMLImageElement;
+  const imageSource = carArr[random].image;
+  if(imgElement){
+    imgElement.src = imageSource;
+  }
 }
 
-console.log("Cars loaded: ", cars);
+window.addEventListener('DOMContentLoaded', loadNewImage);
+
 function checkGuess(): void {
   const firstInput = document.getElementById("guess-input") as HTMLInputElement;
   const result = document.getElementById("result-text") as HTMLParagraphElement;
