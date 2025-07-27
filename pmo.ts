@@ -8,7 +8,7 @@ interface Car {
 
 const bmw1: Car = {
   id: "BMW 3 Series E46",
-  name: "BMW 3 Series E46",
+  name: "3 Series",
   chassis: "E46",
   year: "2004",
   image: "bmwimages/3series/1.jpg"
@@ -16,7 +16,7 @@ const bmw1: Car = {
 
 const bmw2: Car = {
   id: "BMW 3 Series E30",
-  name: "BMW 3 Series E30",
+  name: "3 Series",
   chassis: "E30",
   year: "1980",
   image: "bmwimages/3series/2.jpg"
@@ -44,19 +44,27 @@ let correctCars: Car | null = null;
 } */
 
 
-function loadNewImage(): void{
+function loadNewImage(): Car{
   let carArr: Car[] = [bmw1, bmw2];
   const random = Math.floor(Math.random() * carArr.length);
   const imgElement = document.getElementById('random-bmw') as HTMLImageElement;
+  const modelName = document.getElementById('model-input') as HTMLInputElement;
+  const chassisName = document.getElementById('chassis-code') as HTMLInputElement;
+  const modelSource = carArr[random].name;
+  const chassisSource = carArr[random].chassis;
   const imageSource = carArr[random].image;
   if(imgElement){
     imgElement.src = imageSource;
+    modelName.src = modelSource;
+    chassisName.src = chassisSource;
   }
+  return carArr[random];
 }
 
 window.addEventListener('DOMContentLoaded', loadNewImage);
 
 function checkGuess(): void {
+  const selectedCar: Car = loadNewImage();
   const firstInput = document.getElementById("guess-input") as HTMLInputElement;
   const result = document.getElementById("result-text") as HTMLParagraphElement;
   const modelInput = document.getElementById("model-input") as HTMLInputElement;
@@ -71,9 +79,9 @@ function checkGuess(): void {
   const chassisResult = document.getElementById(
     "chassis-result",
   ) as HTMLParagraphElement;
-  const car = { model: "3 Series", chassisCode: "E46", make: "BMW" };
+  const car = { model: "3 series", chassisCode: "E46", make: "BMW" };
 
-  if (modelCheckInput == car.model.toLowerCase()) {
+  if (modelCheckInput == selectedCar.name.toLowerCase()) {
     modelResult.textContent = "Correct!";
     modelResult.style.color = "green";
   } else {
@@ -81,7 +89,7 @@ function checkGuess(): void {
     modelResult.style.color = "red";
   }
 
-  if (chassisCheckInput == car.chassisCode.toLowerCase()) {
+  if (chassisCheckInput == selectedCar.chassis.toLowerCase()) {
     chassisResult.textContent = "Correct!";
     chassisResult.style.color = "green";
   } else {
