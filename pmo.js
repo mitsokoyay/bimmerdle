@@ -3,14 +3,14 @@ var bmw1 = {
     name: "BMW 3 Series E46",
     chassis: "E46",
     year: "2004",
-    image: "bmwimages/1.jpg"
+    image: "bmwimages/3series/1.jpg"
 };
 var bmw2 = {
     id: "BMW 3 Series E30",
     name: "BMW 3 Series E30",
     chassis: "E30",
     year: "1980",
-    image: "bmwimages/2.jpg"
+    image: "bmwimages/3series/2.jpg"
 };
 var cars = [];
 var correctCars = null;
