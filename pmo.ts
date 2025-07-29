@@ -22,9 +22,6 @@ const bmw2: Car = {
   image: "bmwimages/3series/2.jpg"
 }
 
-let cars: Car[] = [];
-let correctCars: Car | null = null;
-
 /* async function loadCars(): Promise<void> {
   const response = await fetch("cars.json");
   const data: Car[] = await response.json();
