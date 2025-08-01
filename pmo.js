@@ -12,8 +12,6 @@ var bmw2 = {
     year: "1980",
     image: "bmwimages/3series/2.jpg"
 };
-var cars = [];
-var correctCars = null;
 /* async function loadCars(): Promise<void> {
   const response = await fetch("cars.json");
   const data: Car[] = await response.json();
