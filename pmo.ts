@@ -9,7 +9,7 @@ interface Car {
 const bmw1: Car = {
   id: "BMW 3 Series E46",
   name: "3 Series",
-  chassis: "E46",
+  chassis: "E30",
   year: "2004",
   image: "bmwimages/3series/1.jpg"
 }
