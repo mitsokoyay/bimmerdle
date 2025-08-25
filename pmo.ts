@@ -21,6 +21,16 @@ const bmw2: Car = {
   year: "1980",
   image: "bmwimages/3series/2.jpg"
 } 
+interface Question{
+  question: string;
+  car: Car;
+}
+
+const model: Question = {
+  question: "What model is this?",
+  car: bmw1 // TODO: add a way to correlate this to whatever the randomly selected car is
+}
+
 
 /* async function loadCars(): Promise<void> {
   const response = await fetch("cars.json");
@@ -40,6 +50,17 @@ const bmw2: Car = {
   }
 } */
 
+function changeQuestion(): void{
+  // i would want to start with an array of "question object"
+  // the first index of the array would be the basic guess the model question
+  // next up would be chassis code and so on so forth
+  //
+  // so current task is to figure out how to assign question attributes 
+  // to an object
+  //
+  
+  
+}
 
 function loadNewImage(): Car{
   let carArr: Car[] = [bmw1, bmw2];

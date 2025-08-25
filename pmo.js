@@ -12,6 +12,10 @@ var bmw2 = {
     year: "1980",
     image: "bmwimages/3series/2.jpg"
 };
+var model = {
+    question: "What model is this?",
+    car: bmw1 // TODO: add a way to correlate this to whatever the randomly selected car is
+};
 /* async function loadCars(): Promise<void> {
   const response = await fetch("cars.json");
   const data: Car[] = await response.json();
@@ -29,6 +33,15 @@ var bmw2 = {
     }
   }
 } */
+function changeQuestion() {
+    // i would want to start with an array of "question object"
+    // the first index of the array would be the basic guess the model question
+    // next up would be chassis code and so on so forth
+    //
+    // so current task is to figure out how to assign question attributes 
+    // to an object
+    //
+}
 function loadNewImage() {
     var carArr = [bmw1, bmw2];
     var random = Math.floor(Math.random() * carArr.length);
