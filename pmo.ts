@@ -9,7 +9,7 @@ interface Car {
 const bmw1: Car = {
   id: "BMW 3 Series E46",
   name: "3 Series",
-  chassis: "E30",
+  chassis: "E46",
   year: "2004",
   image: "bmwimages/3series/1.jpg"
 }
@@ -20,7 +20,7 @@ const bmw2: Car = {
   chassis: "E30",
   year: "1980",
   image: "bmwimages/3series/2.jpg"
-}
+} 
 
 /* async function loadCars(): Promise<void> {
   const response = await fetch("cars.json");
