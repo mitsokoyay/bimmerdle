@@ -31,6 +31,11 @@ const model: Question = {
   car: bmw1 // TODO: add a way to correlate this to whatever the randomly selected car is
 }
 
+const chassis: Question = {
+  question: "What chassis code does this car have?",
+  car: bmw1 // TODO: same as last instance
+}
+
 
 /* async function loadCars(): Promise<void> {
   const response = await fetch("cars.json");
@@ -50,15 +55,15 @@ const model: Question = {
   }
 } */
 
-function changeQuestion(): void{
-  // i would want to start with an array of "question object"
+function changeQuestion(): Question{ // i would want to start with an array of "question object"
   // the first index of the array would be the basic guess the model question
   // next up would be chassis code and so on so forth
   //
   // so current task is to figure out how to assign question attributes 
   // to an object
   //
-  
+  let questionsArr: Question[] = {model, chassis};
+  return questionsArr[0];
   
 }
 
