@@ -37,15 +37,27 @@ var chassis = {
     }
   }
 } */
+var i = 0;
 function changeQuestion() {
     // the first index of the array would be the basic guess the model question
     // next up would be chassis code and so on so forth
     //
     // so current task is to figure out how to assign question attributes 
     // to an object
-    //
-    var questionsArr = { model: model, chassis: chassis };
+    var inputBox = document.getElementById("model-input");
+    var prompts = ['Guess the model...', 'Guess the Chassis Code...', 'Guess the Year...', 'Guess the Designer...'];
+    if (inputBox && (prompts[i] != null)) {
+        inputBox.placeholder = prompts[i];
+        i++;
+    }
+    var model = {
+        question: "What model is this?",
+        car: bmw1 // TODO: add a way to correlate this to whatever the randomly selected car is
+    };
+    /*
+    let questionsArr: Question[] = {model, chassis};
     return questionsArr[0];
+    */
 }
 function loadNewImage() {
     var carArr = [bmw1, bmw2];

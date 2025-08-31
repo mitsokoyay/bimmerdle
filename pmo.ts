@@ -55,16 +55,30 @@ const chassis: Question = {
   }
 } */
 
-function changeQuestion(): Question{ // i would want to start with an array of "question object"
+
+
+let i: number = 0;
+function changeQuestion(): void{ // i would want to start with an array of "question object"
   // the first index of the array would be the basic guess the model question
   // next up would be chassis code and so on so forth
   //
   // so current task is to figure out how to assign question attributes 
   // to an object
-  //
+  const inputBox = document.getElementById("model-input") as HTMLInputElement;
+  let prompts: string[] = ['Guess the model...', 'Guess the Chassis Code...', 'Guess the Year...', 'Guess the Designer...'];
+  if(inputBox && (prompts[i] != null)){
+    inputBox.placeholder = prompts[i];
+    i++;
+  }
+  const model: Question = {
+    question: "What model is this?",
+    car: bmw1 // TODO: add a way to correlate this to whatever the randomly selected car is
+  }
+
+  /*
   let questionsArr: Question[] = {model, chassis};
   return questionsArr[0];
-  
+  */
 }
 
 function loadNewImage(): Car{
