@@ -12,7 +12,6 @@
     <button id="nqbutton" onclick="changeQuestion()">Next Question</button>
     <div id="image-container">
       <img id="random-bmw" src="" alt="Guess the BMW!">
-      <script src="pmo.js"></script>
     </div>
 
 
@@ -21,6 +20,18 @@
 
    
     <button onclick="checkGuess()">Submit Model</button>
+    <div id = "instructionsPopUp" class="modal">
+      <div class="popUpContent">
+        <span id="closePop" class="close"></span>
+        <h2>Game Instructions</h2>
+        <p>
+          It's time to test your BMW knowledge!
+          Type which model you think you're looking at into the input box.
+          The Picture will zoom out as answers are missed.
+          Once you get the model, you can progress to answering more details about the car!
+        </p>
+      </div>
+    </div>
     <script src="pmo.js"></script>
   </body>
   <body>
