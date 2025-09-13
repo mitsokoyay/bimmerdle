@@ -36,26 +36,7 @@ const chassis: Question = {
   car: bmw1 // TODO: same as last instance
 }
 
-
-/* async function loadCars(): Promise<void> {
-  const response = await fetch("cars.json");
-  const data: Car[] = await response.json();
-  cars = data;
-
-  correctCars = cars[Math.floor(Math.random() * cars.length)];
-  console.log("Correct car: ", correctCars);
-  console.log("Cars loaded:", cars);
-  const imageContainer = document.getElementById("image-container");
-  if (imageContainer && correctCars.image) {
-    const img = imageContainer.querySelector("img");
-    if (img) {
-      img.src = correctCars.image;
-      img.alt = "Guess this BMW!";
-    }
-  }
-} */
-
-
+let currentCar: Car | null = null;
 
 let i: number = 0;
 function changeQuestion(): void{ // i would want to start with an array of "question object"
@@ -80,7 +61,7 @@ function changeQuestion(): void{ // i would want to start with an array of "ques
   return questionsArr[0];
   */
 }
-
+/*
 function loadNewImage(): Car{
   let carArr: Car[] = [bmw1, bmw2];
   const random = Math.floor(Math.random() * carArr.length);
@@ -97,11 +78,23 @@ function loadNewImage(): Car{
   }
   return carArr[random];
 }
-
+*/
+function loadNewImage(): void{
+  let carArr: Car[] = [bmw1, bmw2];
+  const random = Math.floor(Math.random() * carArr.length);
+  currentCar = carArr[random];
+  const imgElement = document.getElementById('random-bmw') as HTMLImageElement;
+  if(imgElement){
+    imgElement.src = currentCar.image;
+    imgElement.alt = "Guess the BMW!";
+  }
+}
 window.addEventListener('DOMContentLoaded', loadNewImage);
 
 function checkGuess(): void {
-  const selectedCar: Car = loadNewImage();
+  if(!currentCar){
+    return;
+  }
   const firstInput = document.getElementById("guess-input") as HTMLInputElement;
   const result = document.getElementById("result-text") as HTMLParagraphElement;
   const modelInput = document.getElementById("model-input") as HTMLInputElement;
@@ -118,7 +111,7 @@ function checkGuess(): void {
   ) as HTMLParagraphElement;
   const car = { model: "3 series", chassisCode: "E46", make: "BMW" };
 
-  if (modelCheckInput == selectedCar.name.toLowerCase()) {
+  if (modelCheckInput == currentCar.name.toLowerCase()) {
     modelResult.textContent = "Correct!";
     modelResult.style.color = "green";
   } else {
@@ -126,7 +119,7 @@ function checkGuess(): void {
     modelResult.style.color = "red";
   }
 
-  if (chassisCheckInput == selectedCar.chassis.toLowerCase()) {
+  if (chassisCheckInput == currentCar.chassis.toLowerCase()) {
     chassisResult.textContent = "Correct!";
     chassisResult.style.color = "green";
   } else {
