@@ -1,3 +1,7 @@
+let currentCar: Car | null = null;
+let zoom: number = 4;
+const minZoom: number = 1;
+const zoomReduce: number = 0.5;
 interface Car {
   id: string;
   name: string;
@@ -5,6 +9,7 @@ interface Car {
   year: string;
   image: string;
 }
+let day: number = 0;
 const renderedCars: Car[] = [
   {
     id: "BMW 3 Series",
@@ -22,22 +27,26 @@ const renderedCars: Car[] = [
   },
 ];
 
+const bmw1 = renderedCars[0];
+const bmw2 = renderedCars[1];
+
 interface Question {
   question: string;
+  answer: string;
   car: Car;
 }
 
 const model: Question = {
   question: "What model is this?",
-  car: renderedCars[0].name, // TODO: add a way to correlate this to whatever the randomly selected car is
+  car: renderedCars[day],
+  answer: renderedCars[day].name,
 };
 
 const chassis: Question = {
   question: "What chassis code does this car have?",
-  car: renderedCars[0].chassis, // TODO: same as last instance
+  car: renderedCars[0], // TODO: same as last instance
+  answer: renderedCars[day].chassis,
 };
-
-let currentCar: Car | null = null;
 
 let i: number = 0;
 function changeQuestion(): void {
@@ -58,17 +67,22 @@ function changeQuestion(): void {
     inputBox.placeholder = prompts[i];
     i++;
   }
-  const model: Question = {
-    question: "What model is this?",
-    car: bmw1, // TODO: add a way to correlate this to whatever the randomly selected car is
-  };
-
   /*
   let questionsArr: Question[] = {model, chassis};
   return questionsArr[0];
   */
 }
+
+function updateZoom(): void {
+  const imgElement = document.getElementById("bmw-rand") as HTMLImageElement;
+  if (imgElement) {
+    imgElement.style.transform = "translate(-50%, -50%) scale(${zoomLevel})";
+    console.log("Zoom level set to: ${zoomLevel}x");
+  }
+}
+
 function loadNewImage(): void {
+  zoom = 4;
   let carArr: Car[] = [bmw1, bmw2];
   const random = Math.floor(Math.random() * carArr.length);
   currentCar = carArr[random];

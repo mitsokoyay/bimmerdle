@@ -1,47 +1,58 @@
-
 body {
-  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
-  text-align: center;
-  padding: 40px;
-  background: white;
-  color: blue;
+    font-family: "Roboto", "Helvetica Neue", sans-serif;
+    text-align: center;
+    padding: 40px;
+    background: white;
+    color: blue;
 }
 
 #image-container img {
-  border: 3px solid #000;
-  border-radius: 10px;
-  padding: 5px;
-  width: fit-content;
-  max-width: 900px;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-/*  filter: brightness(0) invert(1); /* making the image a silhouette */ 
-  background-size: 200%;
+    border: 3px solid #000;
+    border-radius: 10px;
+    padding: 5px;
+    width: fit-content;
+    max-width: 900px;
+    height: fit-content;
+    display: block;
+    margin: 0 auto;
+    background-size: 200%;
+    overflow: hidden;
+    position: relative;
 }
 
-.parent{
-  position: relative;
-  top: 0;
-  left: 0;
-
+#bmw-rand {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(4);
+    transition: transform 1s ease-out;
+    max-width: 100%;
+    height: auto;
+    transform-origin: center;
 }
 
-.image1{
-  position: relative;
-  top: 0;
-  left: 0;
-  border: 1px red solid;
+.parent {
+    position: relative;
+    top: 0;
+    left: 0;
 }
 
-.image2{
-  position: absolute;
-  top: 30px;
-  left: 30px; 
-  border: 1px green solid;
+.image1 {
+    position: relative;
+    top: 0;
+    left: 0;
+    border: 1px red solid;
 }
-input, button {
-  padding: 10px;
-  font-size: 16px;
-  margin-top: 20px;
+
+.image2 {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    border: 1px green solid;
+}
+input,
+button {
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 20px;
 }
