@@ -23,7 +23,7 @@ const renderedCars: Car[] = [
     name: "3 Series",
     chassis: "E30",
     year: "1980",
-    image: "bmwimages/3seires/1.jpg",
+    image: "bmwimages/3series/1.jpg",
   },
 ];
 
@@ -74,7 +74,7 @@ function changeQuestion(): void {
 }
 
 function updateZoom(): void {
-  const imgElement = document.getElementById("bmw-rand") as HTMLImageElement;
+  const imgElement = document.getElementById("random-bmw") as HTMLImageElement;
   if (imgElement) {
     imgElement.style.transform = "translate(-50%, -50%) scale(${zoomLevel})";
     console.log("Zoom level set to: ${zoomLevel}x");
