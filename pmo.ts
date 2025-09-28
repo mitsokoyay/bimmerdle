@@ -1,5 +1,5 @@
 let currentCar: Car | null = null;
-let zoom: number = 4;
+let zoom: number = 3;
 const minZoom: number = 1;
 const zoomReduce: number = 0.5;
 interface Car {
@@ -67,6 +67,7 @@ function changeQuestion(): void {
     inputBox.placeholder = prompts[i];
     i++;
   }
+  updateZoom();
   /*
   let questionsArr: Question[] = {model, chassis};
   return questionsArr[0];
@@ -76,8 +77,8 @@ function changeQuestion(): void {
 function updateZoom(): void {
   const imgElement = document.getElementById("random-bmw") as HTMLImageElement;
   if (imgElement) {
-    imgElement.style.transform = "translate(-50%, -50%) scale(${zoomLevel})";
-    console.log("Zoom level set to: ${zoomLevel}x");
+    imgElement.style.transform = `translate(-50%, -50%) scale(${zoom})`;
+    console.log("Zoom level set to: ${zoom}x");
   }
 }
 
