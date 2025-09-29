@@ -1,6 +1,6 @@
 let currentCar: Car | null = null;
-let zoom: number = 3;
-const minZoom: number = 1;
+let zoom: number = 2;
+const minZoom: number = 0.5;
 const zoomReduce: number = 0.5;
 interface Car {
   id: string;
@@ -50,6 +50,7 @@ const chassis: Question = {
 
 let i: number = 0;
 function changeQuestion(): void {
+  updateZoom();
   // i would want to start with an array of "question object"
   // the first index of the array would be the basic guess the model question
   // next up would be chassis code and so on so forth
@@ -67,7 +68,6 @@ function changeQuestion(): void {
     inputBox.placeholder = prompts[i];
     i++;
   }
-  updateZoom();
   /*
   let questionsArr: Question[] = {model, chassis};
   return questionsArr[0];
@@ -77,13 +77,16 @@ function changeQuestion(): void {
 function updateZoom(): void {
   const imgElement = document.getElementById("random-bmw") as HTMLImageElement;
   if (imgElement) {
+    if (zoom > minZoom) {
+      zoom -= zoomReduce;
+    }
     imgElement.style.transform = `translate(-50%, -50%) scale(${zoom})`;
-    console.log("Zoom level set to: ${zoom}x");
   }
 }
 
 function loadNewImage(): void {
-  zoom = 4;
+  const origElement = document.getElementById("random-bmw") as HTMLImageElement;
+  origElement.style.transform = `translate(-50%, -50%) scale(${zoom})`;
   let carArr: Car[] = [bmw1, bmw2];
   const random = Math.floor(Math.random() * carArr.length);
   currentCar = carArr[random];
