@@ -103,6 +103,7 @@ function showResult(isCorrect: boolean) {
 }
 
 function checkModel() {
+  let correct: boolean = false;
   const modelInput = document.getElementById("model-input") as HTMLInputElement;
   const modelCheck = modelInput.value.trim().toLowerCase();
   const modelResult = document.getElementById(
@@ -110,12 +111,11 @@ function checkModel() {
   ) as HTMLParagraphElement;
   let currentCar = renderedCars[0];
   if (modelCheck == currentCar.name.toLowerCase()) {
-    modelResult.textContent = "Correct!";
-    modelResult.style.color = "green";
+    correct = true;
   } else {
-    modelResult.textContent = "Incorrect!";
-    modelResult.style.color = "red";
+    correct = false;
   }
+  showResult(correct);
 }
 
 //Rewriting a new function for every question, to make this easier to understand.
