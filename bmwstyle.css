@@ -40,6 +40,39 @@ body {
     transform-origin: center;
 }
 
+#correct-message {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#correct-text {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.message-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.message-correct {
+    color: green;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    opacity: 1;
+    visibility: visible;
+}
+
+.feedback-incorrect {
+    color: red;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    opacity: 1;
+    visibility: visible;
+}
+
 .parent {
     position: relative;
     top: 0;

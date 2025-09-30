@@ -88,6 +88,36 @@ function loadNewImage(): void {
 }
 window.addEventListener("DOMContentLoaded", loadNewImage);
 
+function showResult(isCorrect: boolean) {
+  const messageElement = document.getElementById("correct-text") as HTMLElement;
+
+  messageElement.className = "message-hidden";
+
+  if (isCorrect) {
+    messageElement.className = "message-correct";
+    messageElement.textContent = "Correct!";
+  } else {
+    messageElement.className = "message-incorrect";
+    messageElement.textContent = "Incorrect!";
+  }
+}
+
+function checkModel() {
+  const modelInput = document.getElementById("model-input") as HTMLInputElement;
+  const modelCheck = modelInput.value.trim().toLowerCase();
+  const modelResult = document.getElementById(
+    "model-result",
+  ) as HTMLParagraphElement;
+  let currentCar = renderedCars[0];
+  if (modelCheck == currentCar.name.toLowerCase()) {
+    modelResult.textContent = "Correct!";
+    modelResult.style.color = "green";
+  } else {
+    modelResult.textContent = "Incorrect!";
+    modelResult.style.color = "red";
+  }
+}
+
 //Rewriting a new function for every question, to make this easier to understand.
 /*
 function checkGuess(): void {

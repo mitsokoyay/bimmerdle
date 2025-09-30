@@ -1,41 +1,46 @@
-<!DOCTYPE html>
+<!doctype html>
 
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>BeeMW</title>
-    <link rel="stylesheet" href="bmwstyle.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <h1>BeeMW</h1>
-    <button id="nqbutton" onclick="changeQuestion()">Next Question</button>
-    <div id="image-container">
-      <img id="random-bmw" src="" alt="Guess the BMW!">
-    </div>
+    <head>
+        <meta charset="UTF-8" />
+        <title>BeeMW</title>
+        <link rel="stylesheet" href="bmwstyle.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <h1>BeeMW</h1>
+        <button id="nqbutton" onclick="changeQuestion()">Next Question</button>
+        <div id="image-container">
+            <img id="random-bmw" src="" alt="Guess the BMW!" />
+        </div>
 
+        <input type="text" id="model-input" placeholder="Guess the Model..." />
+        <p id="model-result"></p>
 
-    <input type="text" id="model-input" placeholder="Guess the Model...">
-    <p id="model-result"></p>
+        <div id="correct-message">
+            <p id="correct-text" class="correct-hidden"></p>
+        </div>
 
-   
-    <button onclick="checkGuess()">Submit Model</button>
-    <div id = "instructionsPopUp" class="modal">
-      <div class="popUpContent">
-        <span id="closePop" class="close">&times;</span>
-        <h2>Game Instructions</h2>
-        <p>
-          It's time to test your BMW knowledge!
-          Type which model you think you're looking at into the input box.
-          The Picture will zoom out as answers are missed.
-          Once you get the model, you can progress to answering more details about the car!
-        </p>
-      </div>
-    </div>
-    <script src="pmo.js"></script>
-  </body>
-  <body>
-    <hr>
-    <b>Built by Dylan Berutti</b> 
-  </body>
+        <button onclick="checkGuess()">Submit Model</button>
+        <div id="instructionsPopUp" class="modal">
+            <div class="popUpContent">
+                <span id="closePop" class="close">&times;</span>
+                <h2>Game Instructions</h2>
+                <p>
+                    It's time to test your BMW knowledge! Type which model you
+                    think you're looking at into the input box. The Picture will
+                    zoom out as answers are missed. Once you get the model, you
+                    can progress to answering more details about the car!
+                </p>
+            </div>
+        </div>
+        <script src="pmo.js"></script>
+    </body>
+    <body>
+        <hr />
+        <b>Built by Dylan Berutti</b>
+    </body>
 </html>
