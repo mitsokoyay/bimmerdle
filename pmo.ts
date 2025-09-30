@@ -1,5 +1,5 @@
 let currentCar: Car | null = null;
-let zoom: number = 2;
+let zoom: number = 0.15;
 const minZoom: number = 0.5;
 const zoomReduce: number = 0.5;
 interface Car {
@@ -88,6 +88,8 @@ function loadNewImage(): void {
 }
 window.addEventListener("DOMContentLoaded", loadNewImage);
 
+//Rewriting a new function for every question, to make this easier to understand.
+/*
 function checkGuess(): void {
   if (!currentCar) {
     return;
@@ -125,3 +127,4 @@ function checkGuess(): void {
   }
 }
 (window as any).checkGuess = checkGuess;
+*/
