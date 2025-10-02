@@ -168,6 +168,5 @@ function checkGuess(): void {
     chassisResult.style.color = "red";
   }
 }
-(window as any).checkGuess = checkGuess;
 */
 (window as any).checkGuess = checkGuess;
