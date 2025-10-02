@@ -109,8 +109,7 @@ function checkGuess(): void {
 function checkModel(): void {
   const modelInput = document.getElementById("model-input") as HTMLInputElement;
   const modelCheck = modelInput.value.trim().toLowerCase();
-  let currentCar = renderedCars[0];
-
+  if (!currentCar) return;
   if (modelCheck == currentCar.name.toLowerCase()) {
     zoom = minZoom;
     updateZoom();
