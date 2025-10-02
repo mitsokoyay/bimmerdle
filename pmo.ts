@@ -1,6 +1,8 @@
 let currentCar: Car | null = null;
-let zoom: number = 0.15;
-const minZoom: number = 0.5;
+let zoom: number = 2;
+let guessNum: number = 0;
+let questionNum: number = 0;
+const minZoom: number = 0.15;
 const zoomReduce: number = 0.5;
 interface Car {
   id: string;
@@ -50,7 +52,6 @@ const chassis: Question = {
 
 let i: number = 0;
 function changeQuestion(): void {
-  updateZoom();
   const inputBox = document.getElementById("model-input") as HTMLInputElement;
   let prompts: string[] = [
     "Guess the model...",
@@ -67,10 +68,7 @@ function changeQuestion(): void {
 function updateZoom(): void {
   const imgElement = document.getElementById("random-bmw") as HTMLImageElement;
   if (imgElement) {
-    if (zoom > minZoom) {
-      zoom -= zoomReduce;
-    }
-    imgElement.style.transform = `translate(-50%, -50%) scale(${zoom})`;
+    imgElement.style.transform = `translate(-50%,-50%) scale(${zoom})`;
   }
 }
 
@@ -102,20 +100,34 @@ function showResult(isCorrect: boolean) {
   }
 }
 
-function checkModel() {
-  let correct: boolean = false;
+function checkGuess(): void {
+  if ((questionNum = 0)) {
+    checkModel();
+  }
+}
+
+function checkModel(): void {
   const modelInput = document.getElementById("model-input") as HTMLInputElement;
   const modelCheck = modelInput.value.trim().toLowerCase();
-  const modelResult = document.getElementById(
-    "model-result",
-  ) as HTMLParagraphElement;
   let currentCar = renderedCars[0];
+
   if (modelCheck == currentCar.name.toLowerCase()) {
-    correct = true;
+    zoom = minZoom;
+    updateZoom();
+    showResult(true);
+    guessNum++;
   } else {
-    correct = false;
+    guessNum++;
+    if (guessNum < 4) {
+      zoom -= zoomReduce;
+      updateZoom();
+      showResult(false);
+    } else {
+      zoom = 0.15;
+      updateZoom();
+      showResult(false);
+    }
   }
-  showResult(correct);
 }
 
 //Rewriting a new function for every question, to make this easier to understand.
@@ -158,3 +170,4 @@ function checkGuess(): void {
 }
 (window as any).checkGuess = checkGuess;
 */
+(window as any).checkGuess = checkGuess;
