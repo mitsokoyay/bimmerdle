@@ -107,7 +107,7 @@ function checkGuess(): void {
 }
 
 function checkModel(): void {
-  const modelInput = document.getElementById("model-input") as HTMLInputElement;
+  const modelInput = document.getElementById("guess-input") as HTMLInputElement;
   const modelCheck = modelInput.value.trim().toLowerCase();
   if (!currentCar) return;
   if (modelCheck == currentCar.name.toLowerCase()) {
@@ -123,6 +123,31 @@ function checkModel(): void {
       showResult(false);
     } else {
       zoom = 0.15;
+      updateZoom();
+      showResult(false);
+    }
+  }
+}
+
+function checkChassis(): void {
+  const chassisInput = document.getElementById(
+    "guess-input",
+  ) as HTMLInputElement;
+  const chassisCheck = chassisInput.value.trim().toLowerCase();
+  if (!currentCar) return;
+  if (chassisCheck == currentCar.chassis.toLowerCase()) {
+    zoom = minZoom;
+    updateZoom();
+    showResult(true);
+    guessNum++;
+  } else {
+    guessNum++;
+    if (guessNum < 4) {
+      zoom -= zoomReduce;
+      updateZoom();
+      showResult(false);
+    } else {
+      zoom = minZoom;
       updateZoom();
       showResult(false);
     }
