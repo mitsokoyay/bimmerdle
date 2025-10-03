@@ -136,20 +136,28 @@ function checkChassis(): void {
   const chassisCheck = chassisInput.value.trim().toLowerCase();
   if (!currentCar) return;
   if (chassisCheck == currentCar.chassis.toLowerCase()) {
-    zoom = minZoom;
-    updateZoom();
     showResult(true);
     guessNum++;
   } else {
     guessNum++;
     if (guessNum < 4) {
-      zoom -= zoomReduce;
-      updateZoom();
       showResult(false);
     } else {
-      zoom = minZoom;
-      updateZoom();
       showResult(false);
+    }
+  }
+}
+
+function checkYear(): void {
+  const yearInput = document.getElementById("guess-input") as HTMLInputElement;
+  const yearCheck = yearInput.value.trim().toLowerCase();
+  if (!currentCar) return;
+  if (yearCheck == currentCar.year) {
+    showResult(true);
+    guessNum++;
+  } else {
+    guessNum++;
+    if (guessNum < 4) {
     }
   }
 }
