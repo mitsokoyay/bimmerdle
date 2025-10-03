@@ -1,7 +1,7 @@
 let currentCar: Car | null = null;
 let zoom: number = 2;
 let guessNum: number = 0;
-let questionNum: number = 0;
+let questionNum: number = 1;
 const minZoom: number = 0.15;
 const zoomReduce: number = 0.5;
 interface Car {
