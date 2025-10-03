@@ -103,6 +103,10 @@ function showResult(isCorrect: boolean) {
 function checkGuess(): void {
   if (questionNum == 0) {
     checkModel();
+  } else if ((questionNum = 1)) {
+    checkChassis();
+  } else {
+    checkYear();
   }
 }
 
