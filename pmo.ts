@@ -11,7 +11,7 @@ interface Car {
   year: string;
   image: string;
 }
-let day: number = 0;
+let day: number = 1;
 const renderedCars: Car[] = [
   {
     id: "BMW 3 Series",
@@ -46,7 +46,7 @@ const model: Question = {
 
 const chassis: Question = {
   question: "What chassis code does this car have?",
-  car: renderedCars[0], // TODO: same as last instance
+  car: renderedCars[day], // TODO: same as last instance
   answer: renderedCars[day].chassis,
 };
 

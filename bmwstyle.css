@@ -16,6 +16,7 @@ body {
     position: relative;
     background-color: #f0f0f0;
 }
+
 #image-container img {
     width: auto;
     height: auto;
