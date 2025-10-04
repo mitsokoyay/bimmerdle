@@ -85,6 +85,15 @@ button {
     border-radius: 5px;
 }
 
+.model-name-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.model-name-shown {
+    visibility: visible;
+}
+
 .message-hidden {
     opacity: 0;
     visibility: hidden;

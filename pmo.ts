@@ -1,7 +1,7 @@
 let currentCar: Car | null = null;
 let zoom: number = 2;
 let guessNum: number = 0;
-let questionNum: number = 1;
+let questionNum: number = 0;
 const minZoom: number = 0.15;
 const zoomReduce: number = 0.5;
 interface Car {
@@ -25,7 +25,7 @@ const renderedCars: Car[] = [
     name: "3 Series",
     chassis: "E30",
     year: "1980",
-    image: "bmwimages/3series/1.jpg",
+    image: "bmwimages/3series/2.jpg",
   },
 ];
 
@@ -86,7 +86,18 @@ function loadNewImage(): void {
 }
 window.addEventListener("DOMContentLoaded", loadNewImage);
 
-function showResult(isCorrect: boolean) {
+function showModelName(currentCar: Car, show: boolean) {
+  const modelElement = document.getElementById("model-name") as HTMLElement;
+
+  modelElement.className = "model-name-hidden";
+
+  if (show) {
+    modelElement.className = "model-name-shown";
+    modelElement.textContent = currentCar.name;
+  }
+}
+
+function showResult(currentCar: Car, isCorrect: boolean) {
   const messageElement = document.getElementById("correct-text") as HTMLElement;
 
   messageElement.className = "message-hidden";
@@ -94,6 +105,7 @@ function showResult(isCorrect: boolean) {
   if (isCorrect) {
     messageElement.className = "message-correct";
     messageElement.textContent = "Correct!";
+    showModelName(currentCar, true);
   } else {
     messageElement.className = "message-incorrect";
     messageElement.textContent = "Incorrect!";
@@ -103,7 +115,7 @@ function showResult(isCorrect: boolean) {
 function checkGuess(): void {
   if (questionNum == 0) {
     checkModel();
-  } else if ((questionNum = 1)) {
+  } else if (questionNum == 1) {
     checkChassis();
   } else {
     checkYear();
@@ -117,18 +129,18 @@ function checkModel(): void {
   if (modelCheck == currentCar.name.toLowerCase()) {
     zoom = minZoom;
     updateZoom();
-    showResult(true);
+    showResult(currentCar, true);
     guessNum++;
   } else {
     guessNum++;
     if (guessNum < 4) {
       zoom -= zoomReduce;
       updateZoom();
-      showResult(false);
+      showResult(currentCar, false);
     } else {
       zoom = 0.15;
       updateZoom();
-      showResult(false);
+      showResult(currentCar, false);
     }
   }
 }
@@ -140,14 +152,14 @@ function checkChassis(): void {
   const chassisCheck = chassisInput.value.trim().toLowerCase();
   if (!currentCar) return;
   if (chassisCheck == currentCar.chassis.toLowerCase()) {
-    showResult(true);
+    showResult(currentCar, true);
     guessNum++;
   } else {
     guessNum++;
     if (guessNum < 4) {
-      showResult(false);
+      showResult(currentCar, false);
     } else {
-      showResult(false);
+      showResult(currentCar, false);
     }
   }
 }
@@ -157,11 +169,12 @@ function checkYear(): void {
   const yearCheck = yearInput.value.trim().toLowerCase();
   if (!currentCar) return;
   if (yearCheck == currentCar.year) {
-    showResult(true);
+    showResult(currentCar, true);
     guessNum++;
   } else {
     guessNum++;
     if (guessNum < 4) {
+      showResult(currentCar, false);
     }
   }
 }
