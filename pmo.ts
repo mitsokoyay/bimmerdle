@@ -93,9 +93,9 @@ function updateZoom(): void {
 function loadNewImage(): void {
   const origElement = document.getElementById("random-bmw") as HTMLImageElement;
   origElement.style.transform = `translate(-50%, -50%) scale(${zoom})`;
-  let carArr: Car[] = [bmw1, bmw2];
-  const random = Math.floor(Math.random() * carArr.length);
-  currentCar = carArr[random];
+  if (day >= 0 && day < renderedCars.length) {
+    currentCar = renderedCars[day];
+  }
   const imgElement = document.getElementById("random-bmw") as HTMLImageElement;
   if (imgElement && currentCar) {
     imgElement.src = currentCar.image;
@@ -156,9 +156,10 @@ function checkModel(): void {
       updateZoom();
       showResult(currentCar, false);
     } else {
-      zoom = 0.15;
+      zoom = minZoom;
       updateZoom();
       showResult(currentCar, false);
+      showModelName(currentCar, true);
     }
   }
 }
