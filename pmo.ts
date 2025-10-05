@@ -11,7 +11,7 @@ interface Car {
   year: string;
   image: string;
 }
-let day: number = 1;
+let day: number = 0;
 let renderedCars: Car[] = [
   {
     id: "BMW 3 Series",
@@ -49,18 +49,25 @@ const chassis: Question = {
   car: renderedCars[day], // TODO: same as last instance
   answer: renderedCars[day].chassis,
 };
-
+/*
 async function loadCars() {
   try {
-    const response = await fetch("../cars.json");
+    const response = await fetch("cars.json");
     const carsData = await response.json();
     renderedCars = carsData;
+    if (renderedCars.length > 0) {
+      loadNewImage();
+    } else {
+      console.error("Error: cars unable to be loaded");
+    }
   } catch (error) {
     console.error("Error loading: ", error);
-    console.log("hello");
   }
 }
 
+window.addEventListener("DOMContentLoaded", loadNewImage);
+window.addEventListener("DOMContentLoaded", loadCars);
+*/
 let i: number = 0;
 function changeQuestion(): void {
   const inputBox = document.getElementById("model-input") as HTMLInputElement;
@@ -90,7 +97,7 @@ function loadNewImage(): void {
   const random = Math.floor(Math.random() * carArr.length);
   currentCar = carArr[random];
   const imgElement = document.getElementById("random-bmw") as HTMLImageElement;
-  if (imgElement) {
+  if (imgElement && currentCar) {
     imgElement.src = currentCar.image;
     imgElement.alt = "Guess the BMW!";
   }
