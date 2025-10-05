@@ -117,7 +117,10 @@ function showModelName(currentCar: Car, show: boolean) {
 
 function showResult(currentCar: Car, isCorrect: boolean) {
   const messageElement = document.getElementById("correct-text") as HTMLElement;
-
+  const nextQuesElement = document.getElementById(
+    "next-question",
+  ) as HTMLButtonElement;
+  nextQuesElement.className = "next-question-hidden";
   messageElement.className = "message-hidden";
 
   if (isCorrect) {
