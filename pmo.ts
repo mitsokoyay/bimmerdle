@@ -4,6 +4,7 @@ let guessNum: number = 0;
 let questionNum: number = 0;
 const minZoom: number = 0.15;
 const zoomReduce: number = 0.5;
+
 interface Car {
   id: string;
   name: string;
@@ -11,7 +12,9 @@ interface Car {
   year: string;
   image: string;
 }
+
 let day: number = 0;
+
 let renderedCars: Car[] = [
   {
     id: "BMW 3 Series",
@@ -111,7 +114,7 @@ function showModelName(currentCar: Car, show: boolean) {
 
   if (show) {
     modelElement.className = "model-name-shown";
-    modelElement.textContent = currentCar.name;
+    modelElement.textContent = "The car is: " + currentCar.name;
   }
 }
 
