@@ -73,6 +73,9 @@ window.addEventListener("DOMContentLoaded", loadCars);
 */
 let i: number = 0;
 function changeQuestion(): void {
+  const quesButton = document.getElementById(
+    "next-question",
+  ) as HTMLButtonElement;
   const inputBox = document.getElementById("model-input") as HTMLInputElement;
   let prompts: string[] = [
     "Guess the model...",
@@ -93,6 +96,15 @@ function updateZoom(): void {
   }
 }
 
+function hideNextQuestion(): void {
+  const nextQuestionButton = document.getElementById(
+    "next-question",
+  ) as HTMLButtonElement;
+  if (nextQuestionButton) {
+    nextQuestionButton.className = "next-question-hide";
+  }
+}
+
 function loadNewImage(): void {
   const origElement = document.getElementById("random-bmw") as HTMLImageElement;
   origElement.style.transform = `translate(-50%, -50%) scale(${zoom})`;
@@ -105,7 +117,10 @@ function loadNewImage(): void {
     imgElement.alt = "Guess the BMW!";
   }
 }
-window.addEventListener("DOMContentLoaded", loadNewImage);
+window.addEventListener("DOMContentLoaded", () => {
+  loadNewImage();
+  hideNextQuestion();
+});
 
 function showModelName(currentCar: Car, show: boolean) {
   const modelElement = document.getElementById("model-name") as HTMLElement;
