@@ -138,7 +138,7 @@ function showResult(currentCar: Car, isCorrect: boolean) {
   const nextQuesElement = document.getElementById(
     "next-question",
   ) as HTMLButtonElement;
-  nextQuesElement.className = "next-question-hidden";
+  nextQuesElement.className = "next-question-hide";
   messageElement.className = "message-hidden";
 
   if (isCorrect) {
