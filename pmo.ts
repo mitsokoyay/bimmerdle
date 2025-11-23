@@ -52,6 +52,35 @@ const chassis: Question = {
   car: renderedCars[day], // TODO: same as last instance
   answer: renderedCars[day].chassis,
 };
+
+function loadCars() {
+  return fetch("cars.json")
+    .then((res) => res.json())
+    .then((data) => {
+      if (Array.isArray(data) && data.length > 0) {
+        renderedCars = data;
+        day = 0;
+        currentCar = renderedCars[day];
+      }
+    })
+    .catch((err) => {
+      console.error("error loading cars");
+    });
+}
+/*
+function advance() {
+  if (!renderedCars.length) return;
+  day = (day + 1) % renderedCars.length;
+  currentCar = renderedCars[day];
+  guessNum = 0;
+  zoom = 2;
+  updateZoom();
+  loadNewImage();
+  hideNextQuestion();
+  i = 0;
+  var inputBox = document.getElementById("guess-input");
+}
+*/
 /*
 async function loadCars() {
   try {
